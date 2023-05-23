@@ -1,6 +1,30 @@
-<script setup>
-import AppHeader from './components/AppHeader.vue';
-import AppMain from './components/AppMain.vue';
+<script>
+import AppHeader from './components/AppHeader.vue'
+import AppMain from './components/AppMain.vue'
+import { store } from './store';
+import axios from 'axios';
+
+export default {
+  components: {
+    AppHeader,
+    AppMain
+  },
+  data() {
+    return {
+      store
+    }
+
+  },
+
+  mounted() {
+    axios.get(this.store.urlAPI).then(r => {
+      this.store.cardsResponse = r.data.data;
+      console.log(this.store.cardsResponse)
+      /* console.log(this.store.cardsResponse[0].card_images[0].image_url) */
+    })
+
+  }
+}
 </script>
 
 <template>
