@@ -2,7 +2,8 @@
 import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue'
 import { store } from './store';
-import axios from 'axios';
+
+import { cardAPI } from './api';
 
 export default {
   components: {
@@ -11,17 +12,16 @@ export default {
   },
   data() {
     return {
-      store
+      store,
+      cardAPI
+
     }
 
   },
 
   mounted() {
-    axios.get(this.store.urlAPI).then(r => {
-      this.store.cardsResponse = r.data.data;
-      console.log(this.store.cardsResponse)
-      /* console.log(this.store.cardsResponse[0].card_images[0].image_url) */
-    })
+
+    this.cardAPI(this.store)
 
   }
 }
