@@ -12,11 +12,16 @@ export default {
         return {
             store,
             cardAPI,
-            archetypeAPI
+            archetypeAPI,
         }
     },
     mounted() {
         archetypeAPI(store)
+    },
+    methods: {
+        callEvent(e) {
+            console.log(e.target.value)
+        }
     }
 
 }
@@ -38,10 +43,11 @@ export default {
             </div>
             <div class="col-12 col-lg-3 col-md-6">
                 <label class="mb-2" for="archetype">Seleziona archetipo</label>
-                <select @change="archetypeAPI(store)" id="archetype" v-model="store.archetype" class="form-select p-2"
+                <select @change="cardAPI(store)" id="archetype" v-model="store.cardArchetype" class="form-select p-2"
                     aria-label="Default select example">
+                    <option value="">Seleziona un archetipo</option>
                     <template v-for="item in store.archetypes">
-                        <option value="item.archetype_name">{{ item.archetype_name }}</option>
+                        <option :value="item.archetype_name">{{ item.archetype_name }}</option>
                     </template>
                 </select>
             </div>
