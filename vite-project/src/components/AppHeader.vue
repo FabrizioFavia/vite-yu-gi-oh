@@ -16,6 +16,5 @@ export default {
 header {
   height: 100px;
   background-color: white;
-  border: 1px solid red;
 }
 </style>

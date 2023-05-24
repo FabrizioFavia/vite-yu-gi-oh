@@ -17,6 +17,7 @@ export default {
     },
     mounted() {
         archetypeAPI(store)
+        cardAPI(store)
     },
     methods: {
 
