@@ -2,6 +2,7 @@
 
 import { store } from '../store';
 import { cardAPI } from '../api';
+import { archetypeAPI } from '../api'
 
 
 export default {
@@ -10,9 +11,13 @@ export default {
     data() {
         return {
             store,
-            cardAPI
+            cardAPI,
+            archetypeAPI
         }
     },
+    mounted() {
+        archetypeAPI(store)
+    }
 
 }
 </script>
@@ -21,14 +26,23 @@ export default {
     <main>
         <div class="row d-flex justify-content-center p-3">
             <div class="col-12 col-lg-3 col-md-6">
-                <label for="cardNumber">Numero carte in pagina</label>
-                <select id="cardNumber" @change="cardAPI(store)" v-model="store.cardNumber" class="form-select"
+                <label class="mb-2" for="cardNumber">Numero carte per pagina</label>
+                <select id="cardNumber" @change="cardAPI(store)" v-model="store.cardNumber" class="form-select p-2"
                     aria-label="Default select example">
                     <option value="20">20</option>
                     <option value="50">50</option>
                     <option value="100">100</option>
                     <option value="200">200</option>
 
+                </select>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6">
+                <label class="mb-2" for="archetype">Seleziona archetipo</label>
+                <select @change="archetypeAPI(store)" id="archetype" v-model="store.archetype" class="form-select p-2"
+                    aria-label="Default select example">
+                    <template v-for="item in store.archetypes">
+                        <option value="item.archetype_name">{{ item.archetype_name }}</option>
+                    </template>
                 </select>
             </div>
         </div>
@@ -41,6 +55,8 @@ export default {
                     <p class="mt-2">{{ card.type }}</p>
                 </div>
             </div>
+
+            <!-- <pre>{{ store.archetypes }}</pre> -->
         </div>
 
 
