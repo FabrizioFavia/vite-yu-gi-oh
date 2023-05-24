@@ -57,7 +57,7 @@ export default {
                 <div class="oneCard d-flex flex-column align-items-center">
                     <img class="cardImg" :src="card.card_images[0].image_url" alt="">
                     <h3 class="mt-4 text-white w-100">{{ card.name.toUpperCase() }}</h3>
-                    <p class="mt-2">{{ card.type }}</p>
+                    <p class="mt-2">{{ card.archetype }}</p>
                 </div>
             </div>
 
