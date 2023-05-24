@@ -19,9 +19,7 @@ export default {
         archetypeAPI(store)
     },
     methods: {
-        callEvent(e) {
-            console.log(e.target.value)
-        }
+
     }
 
 }
